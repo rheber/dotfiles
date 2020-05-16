@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+strict() {
+  set -e
+  set -u
+  set -o pipefail
+  set -o errtrace
+  trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+}
+
+lax() {
+  trap - ERR
+  set +o errtrace
+  set +o pipefail
+  set +u
+  set +e
+}
+
+strict
