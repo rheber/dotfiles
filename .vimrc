@@ -3,6 +3,7 @@
 set nocompatible
 set noswapfile
 set encoding=utf-8
+set term=screen-256color
 set ttyfast
 colorscheme slate
 " Information
