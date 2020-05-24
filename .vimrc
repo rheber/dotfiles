@@ -3,11 +3,11 @@
 set nocompatible
 set noswapfile
 set encoding=utf-8
+set switchbuf=usetab,newtab
 set term=screen-256color
 set ttyfast
 colorscheme slate
 " Information
-set statusline=%m%r%w%q%y%F%=%c,%l/%L(%P)
 set colorcolumn=80
 set cursorcolumn
 set cursorline
@@ -34,8 +34,12 @@ set ignorecase
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'preservim/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'VundleVim/Vundle.vim'
+
 call vundle#end()
 filetype indent plugin on
 syntax on
@@ -43,9 +47,11 @@ packadd! matchit
 
 let NERDTreeShowHidden=1
 
-let g:netrw_banner=0      " Hide file browser banner
-let g:netrw_liststyle=3   " Set file browser to tree view
-let g:netrw_sizestyle='H' " Human-readable file sizes
+let g:syntastic_python_checkers = ['pylint', 'python']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Commands
 " Dumb snippets
@@ -63,6 +69,12 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) &&
   \ !exists("s:std_in") | wincmd p | ene | exe 'NERDTree' argv()[0] | endif
+" Statusline
+set statusline=%m%r%w%q%y%F
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+set statusline+=%=%c,%l/%L(%P)
 
 " Remaps
 " Leader
