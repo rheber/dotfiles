@@ -79,6 +79,7 @@ set statusline+=%=%c,%l/%L(%P)
 " Remaps
 " Leader
 let mapleader = "\\"
+let maplocalleader = ","
 " No arrows
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -88,9 +89,12 @@ noremap <PageUp> <Nop>
 noremap <PageDown> <Nop>
 " Fast Ex mode
 nnoremap ; :
-nnoremap : ;
 vnoremap ; :
-vnoremap : ;
+" Displaced characters
+nnoremap <leader>; ;
+vnoremap <leader>; ;
+nnoremap <leader>, ,
+vnoremap <leader>, ,
 " Literals
 inoremap <S-Tab> <C-V><Tab>
 " Plugins
