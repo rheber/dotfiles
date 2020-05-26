@@ -13,8 +13,10 @@ set cursorcolumn
 set cursorline
 set laststatus=2
 set number
+set shortmess+=c
 set showcmd
 set showmode
+set signcolumn=yes
 set wildmenu
 " Whitespace and indentation
 set list
@@ -22,40 +24,53 @@ set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:␣
 set showbreak=↪
 set wrap
 set backspace=indent,eol,start
-set expandtab    " Soft tabs
-set shiftwidth=2 " Indent size
-set tabstop=2    " Spaces per tab
+set expandtab
+set shiftwidth=2
+set tabstop=2
 " Text search
 set hlsearch
 set incsearch
 set ignorecase
 
 " Plugins
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin()
 
-Plugin 'preservim/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'VundleVim/Vundle.vim'
+Plug 'junegunn/vim-plug'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-unimpaired'
 
-call vundle#end()
-filetype indent plugin on
-syntax on
+call plug#end()
+
 packadd! matchit
+
+let g:coc_disable_startup_warning=1
 
 let NERDTreeShowHidden=1
 
-let g:syntastic_python_checkers = ['pylint', 'python']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Commands
+" Commands and functions
 " Dumb snippets
 command -nargs=1 Snip :read $HOME/.vim/snippets/<args>
+" CoC
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 
 " Complex settings
 " Reload changed files
@@ -69,28 +84,28 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) &&
   \ !exists("s:std_in") | wincmd p | ene | exe 'NERDTree' argv()[0] | endif
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 " Statusline
 set statusline=%m%r%w%q%y%F
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set statusline+=%=%c,%l/%L(%P)
+set statusline+=%=
+set statusline+=[%{coc#status()}%{get(b:,'coc_current_function','')}]
+set statusline+=%c,%l/%L(%P)
 
 " Remaps
-" Leader
+" Miscellany
 let mapleader = "\\"
 let maplocalleader = ","
-" No arrows
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 noremap <PageUp> <Nop>
 noremap <PageDown> <Nop>
-" Fast Ex mode
+noremap <space> <Nop>
+noremap <backspace> <Nop>
 nnoremap ; :
 vnoremap ; :
-" Displaced characters
 nnoremap <leader>; ;
 vnoremap <leader>; ;
 nnoremap <leader>, ,
@@ -98,4 +113,43 @@ vnoremap <leader>, ,
 " Literals
 inoremap <S-Tab> <C-V><Tab>
 " Plugins
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>qf  <Plug>(coc-fix-current)
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 nnoremap <leader>n :NERDTreeToggle<CR>
