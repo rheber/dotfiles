@@ -1,6 +1,9 @@
 {
       "python.analysis.diagnosticEnabled": true,
       "python.linting.enabled": true,
+      "python.linting.pylintArgs": [
+        "--disable=C0103"
+      ],
       "python.linting.pylintEnabled": true,
       "python.linting.pylintUseMinimalCheckers": false,
       "python.jediEnabled": false

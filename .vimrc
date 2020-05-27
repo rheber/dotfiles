@@ -10,6 +10,7 @@ Plug 'junegunn/vim-plug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'tomasr/molokai'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 
 call plug#end()
@@ -59,6 +60,7 @@ set encoding=utf-8
 set switchbuf=usetab,newtab
 set term=screen-256color
 set ttyfast
+set updatetime=300
 "" Information
 set colorcolumn=80
 set cursorcolumn
