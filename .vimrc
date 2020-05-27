@@ -1,37 +1,3 @@
-" Simple settings
-" Miscellany
-set nocompatible
-set noswapfile
-set encoding=utf-8
-set switchbuf=usetab,newtab
-set term=screen-256color
-set ttyfast
-colorscheme slate
-" Information
-set colorcolumn=80
-set cursorcolumn
-set cursorline
-set laststatus=2
-set number
-set shortmess+=c
-set showcmd
-set showmode
-set signcolumn=yes
-set wildmenu
-" Whitespace and indentation
-set list
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:␣
-set showbreak=↪
-set wrap
-set backspace=indent,eol,start
-set expandtab
-set shiftwidth=2
-set tabstop=2
-" Text search
-set hlsearch
-set incsearch
-set ignorecase
-
 " Plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -43,22 +9,14 @@ call plug#begin()
 Plug 'junegunn/vim-plug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
+Plug 'tomasr/molokai'
 Plug 'tpope/vim-unimpaired'
 
 call plug#end()
 
 packadd! matchit
 
-let g:coc_disable_startup_warning=1
-
-let NERDTreeShowHidden=1
-
-" Commands and functions
-" Dumb snippets
-command -nargs=1 Snip :read $HOME/.vim/snippets/<args>
-" CoC
-command! -nargs=0 Format :call CocAction('format')
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
+" Functions
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -71,29 +29,73 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Commands
+"" Dumb snippets
+command -nargs=1 Snip :read $HOME/.vim/snippets/<args>
+"" CoC
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
-" Complex settings
-" Reload changed files
-set autoread
+" Autocommands
+"" Reload changed files
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
   \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Reloaded." | echohl None
-" Open NERDTree automatically
+"" Open NERDTree automatically
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) &&
   \ !exists("s:std_in") | wincmd p | ene | exe 'NERDTree' argv()[0] | endif
-" Highlight the symbol and its references when holding the cursor.
+"" Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-" Statusline
+
+" Settings
+"" Miscellany
+set nocompatible
+set noswapfile
+set autoread
+set encoding=utf-8
+set switchbuf=usetab,newtab
+set term=screen-256color
+set ttyfast
+"" Information
+set colorcolumn=80
+set cursorcolumn
+set cursorline
+set laststatus=2
+set number
+set shortmess+=c
+set showcmd
+set showmode
+set signcolumn=yes
+set wildmenu
+"" Whitespace and indentation
+set list
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:␣
+set showbreak=↪
+set wrap
+set backspace=indent,eol,start
+set expandtab
+set shiftwidth=2
+set tabstop=2
+"" Text search
+set hlsearch
+set incsearch
+set ignorecase
+"" Statusline
 set statusline=%m%r%w%q%y%F
 set statusline+=%=
 set statusline+=[%{coc#status()}%{get(b:,'coc_current_function','')}]
 set statusline+=%c,%l/%L(%P)
+"" Plugins
+let g:coc_disable_startup_warning=1
+colorscheme molokai
+let g:molokai_original = 1
+let NERDTreeShowHidden=1
 
-" Remaps
-" Miscellany
+" Key bindings
+"" Miscellany
 let mapleader = "\\"
 let maplocalleader = ","
 noremap <Up> <Nop>
@@ -110,9 +112,9 @@ nnoremap <leader>; ;
 vnoremap <leader>; ;
 nnoremap <leader>, ,
 vnoremap <leader>, ,
-" Literals
+"" Literals
 inoremap <S-Tab> <C-V><Tab>
-" Plugins
+"" Plugins
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
