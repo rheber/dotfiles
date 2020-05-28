@@ -36,7 +36,6 @@ endfunction
 command -nargs=1 Snip :read $HOME/.vim/snippets/<args>
 "" CoC
 command! -nargs=0 Format :call CocAction('format')
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " Autocommands
 "" Reload changed files
@@ -58,11 +57,14 @@ set nocompatible
 set noswapfile
 set autoread
 set encoding=utf-8
+set foldmethod=indent
+set foldlevelstart=99
 set switchbuf=usetab,newtab
 set term=screen-256color
 set ttyfast
 set updatetime=300
 "" Information
+set cmdheight=2
 set colorcolumn=80
 set cursorcolumn
 set cursorline
@@ -94,7 +96,6 @@ set statusline+=%c,%l/%L(%P)
 "" Plugins
 let g:coc_disable_startup_warning=1
 colorscheme molokai
-let g:molokai_original = 1
 let NERDTreeShowHidden=1
 
 " Key bindings
