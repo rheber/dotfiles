@@ -6,6 +6,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin()
 
+Plug 'chrisbra/csv.vim'
 Plug 'junegunn/vim-plug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
