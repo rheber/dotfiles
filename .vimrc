@@ -7,15 +7,18 @@ endif
 call plug#begin()
 
 Plug 'chrisbra/csv.vim'
+Plug 'frazrepo/vim-rainbow'
 Plug 'junegunn/vim-plug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 call plug#end()
 
+let g:loaded_matchparen=1
 packadd! matchit
 
 " Functions
@@ -91,16 +94,18 @@ set ignorecase
 "" Statusline
 set statusline=%m%r%w%q%y%F
 set statusline+=%=
+set statusline+=%{FugitiveStatusline()}
 set statusline+=[%{coc#status()}%{get(b:,'coc_current_function','')}]
 set statusline+=%c,%l/%L(%P)
 "" Plugins
 let g:coc_disable_startup_warning=1
 colorscheme molokai
 let NERDTreeShowHidden=1
+let g:rainbow_active=1
 
 " Key bindings
 "" Miscellany
-let mapleader = "\\"
+let mapleader = " "
 let maplocalleader = ","
 noremap <Up> <Nop>
 noremap <Down> <Nop>
