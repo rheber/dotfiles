@@ -1,5 +1,18 @@
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias grep='grep --color=auto'
-alias ls='ls --color=auto'
+
+linuxAliases () {
+  alias ls='ls --color=auto'
+}
+
+macAliases () {
+  alias ls='ls -G'
+}
+
+unameOut="$(uname -s)"
+case "${unameOut}" in
+  Linux*)  linuxAliases;;
+  Darwin*) macAliases;;
+esac
 
 [ -f ~/.local/.aliases ] && source ~/.local/.aliases
