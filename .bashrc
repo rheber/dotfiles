@@ -7,6 +7,12 @@ esac
 # Window size
 shopt -s checkwinsize
 
+# Enable colours
+if [ -x /usr/bin/dircolors ]
+then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
+
 # History
 HISTCONTROL=ignoreboth
 shopt -s histappend
@@ -27,7 +33,6 @@ then
 fi
 
 # Prompt string: exit status, git branch, current folder.
-DEFAULT_PS1=$PS1
 PS1='$?|$(git symbolic-ref --short HEAD 2> /dev/null)|\W\$'
 
 source ~/.profile

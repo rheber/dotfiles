@@ -2,7 +2,7 @@
 export EDITOR=vim
 
 # Git
-[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
+[ -f ~/.config/.git-completion.bash ] && source ~/.config/.git-completion.bash
 
 # NVM
 export NVM_DIR="$HOME/.config/nvm"
