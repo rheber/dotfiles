@@ -1,0 +1,11 @@
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Colour
+if [ -x /usr/bin/dircolors ]
+then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+fi
+
+[ -f ~/.local/.aliases ] && source ~/.local/.aliases
