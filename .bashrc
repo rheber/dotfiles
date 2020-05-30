@@ -16,7 +16,6 @@ fi
 # History
 HISTCONTROL=ignoreboth
 shopt -s histappend
-PROMPT_COMMAND='history -a'
 HISTSIZE=1000
 HISTFILESIZE=2000
 
@@ -32,8 +31,36 @@ then
   fi
 fi
 
-# Prompt string: exit status, git branch, current folder.
-PS1='$?|$(git symbolic-ref --short HEAD 2> /dev/null)|\W\$'
+# Prompt command
+promptCommand () {
+  local exitStatus="$?"
+  history -a
+
+  local red='\[\033[31m\]'
+  local green='\[\033[32m\]'
+  local yellow='\[\033[33m\]'
+  local blue='\[\033[34m\]'
+  local magenta='\[\033[35m\]'
+  local cyan='\[\033[36m\]'
+  local normal='\[\033[00m\]'
+
+  PS1=''
+  if [ $exitStatus == 0 ]
+  then
+    PS1+="${green}"
+  else
+    PS1+="${red}"
+  fi
+  PS1+='$?'
+  PS1+="${normal}|"
+  PS1+="${magenta}"
+  PS1+='$(git symbolic-ref --short HEAD 2> /dev/null)'
+  PS1+="${normal}|"
+  PS1+="${cyan}\W"
+  PS1+="${yellow}\$"
+  PS1+="${normal} "
+}
+PROMPT_COMMAND=promptCommand
 
 # Git
 [ -f ~/.config/.git-completion.bash ] && source ~/.config/.git-completion.bash
