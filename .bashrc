@@ -35,4 +35,7 @@ fi
 # Prompt string: exit status, git branch, current folder.
 PS1='$?|$(git symbolic-ref --short HEAD 2> /dev/null)|\W\$'
 
+# Git
+[ -f ~/.config/.git-completion.bash ] && source ~/.config/.git-completion.bash
+
 source ~/.profile
