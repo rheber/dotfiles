@@ -9,6 +9,7 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'chrisbra/csv.vim'
 Plug 'frazrepo/vim-rainbow'
+Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-plug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
@@ -115,16 +116,13 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 noremap <PageUp> <Nop>
 noremap <PageDown> <Nop>
+noremap <CR> <Nop>
 noremap <space> <Nop>
 noremap <backspace> <Nop>
-nnoremap ; :
-vnoremap ; :
-nnoremap <leader>; ;
-vnoremap <leader>; ;
-nnoremap <leader>, ,
-vnoremap <leader>, ,
-"" Literals
-inoremap <S-Tab> <C-V><Tab>
+noremap , <Nop>
+noremap ; :
+noremap <leader>; ;
+noremap <leader>, ,
 "" Plugins
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
