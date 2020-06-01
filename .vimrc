@@ -6,6 +6,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin()
 
+Plug 'airblade/vim-gitgutter'
 Plug 'chrisbra/csv.vim'
 Plug 'frazrepo/vim-rainbow'
 Plug 'junegunn/vim-plug'
@@ -15,6 +16,7 @@ Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
 

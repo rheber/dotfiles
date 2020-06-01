@@ -2,7 +2,7 @@
   path = ~/.local/.gitconfig
 [alias]
   ch = checkout
-	ct = checkout --track
+  ct = checkout --track
   st = status
 [core]
-	excludesfile = ~/.config/.gitignore_global
+  excludesfile = ~/.config/.gitignore_global
