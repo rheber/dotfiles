@@ -2,6 +2,7 @@
   path = ~/.local/.gitconfig
 [alias]
   ch = checkout
+  co = commit
   ct = checkout --track
   st = status
 [core]

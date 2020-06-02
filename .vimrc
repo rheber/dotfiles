@@ -15,6 +15,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -65,6 +66,7 @@ set autoread
 set encoding=utf-8
 set foldmethod=indent
 set foldlevelstart=99
+set hidden
 set switchbuf=usetab,newtab
 set term=screen-256color
 set ttyfast
@@ -87,11 +89,11 @@ set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:␣
 set showbreak=↪
 set wrap
 set backspace=indent,eol,start
+set autoindent
 set expandtab
 set shiftwidth=2
 set tabstop=2
 "" Text search
-set hlsearch
 set incsearch
 set ignorecase
 "" Statusline
@@ -114,8 +116,6 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
-noremap <PageUp> <Nop>
-noremap <PageDown> <Nop>
 noremap <CR> <Nop>
 noremap <space> <Nop>
 noremap <backspace> <Nop>
