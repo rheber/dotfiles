@@ -40,7 +40,7 @@ endfunction
 
 " Commands
 "" Dumb snippets
-command -nargs=1 Snip :read $HOME/.vim/snippets/<args>
+command -nargs=1 Snip :read $HOME/.config/editor/snippets/<args>
 "" CoC
 command! -nargs=0 Format :call CocAction('format')
 
