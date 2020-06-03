@@ -1,9 +1,14 @@
 [include]
   path = ~/.local/.gitconfig
 [alias]
-  ch = checkout
-  co = commit
-  ct = checkout --track
-  st = status
+  br  = branch
+  brd = branch -d
+  ch  = checkout
+  chb = checkout -b
+  cht = checkout -t
+  cm  = commit
+  cma = commit --amend
+  rpo = remote prune origin
+  st  = status
 [core]
   excludesfile = ~/.config/.gitignore_global
