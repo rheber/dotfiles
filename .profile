@@ -2,7 +2,10 @@
 export EDITOR=nvim
 export SHELL=bash
 
-export VIMINIT='if !has("nvim") | source $HOME/.config/.vimrc | endif'
+# XDG
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
 
 [ -f ~/.local/.profile ] && source ~/.local/.profile
 [ -f ~/.config/.aliases ] && source ~/.config/.aliases
