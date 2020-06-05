@@ -1,5 +1,5 @@
 # Default programs
-export EDITOR=vim
+export EDITOR=nvim
 export SHELL=bash
 
 export VIMINIT='if !has("nvim") | source $HOME/.config/.vimrc | endif'
