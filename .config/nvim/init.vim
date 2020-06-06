@@ -10,10 +10,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'frazrepo/vim-rainbow'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-plug'
+Plug 'justinmk/vim-sneak'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tomasr/molokai'
-Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -92,6 +93,7 @@ omap ac <Plug>(coc-classobj-a)
 
 " Settings
 "" Miscellany
+set nohlsearch
 set noswapfile
 set ignorecase
 set termguicolors
