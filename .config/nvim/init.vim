@@ -8,6 +8,7 @@ endif
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'frazrepo/vim-rainbow'
+Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
