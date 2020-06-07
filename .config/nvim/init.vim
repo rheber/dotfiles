@@ -68,7 +68,9 @@ noremap + <Nop>
 noremap ; :
 noremap <leader>; ;
 noremap <leader>, ,
-"" Navigate completion menu
+"" Menu navigation
+cnoremap <expr> <c-j> ("\<C-n>")
+cnoremap <expr> <c-k> ("\<C-p>")
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
 "" Plugins
