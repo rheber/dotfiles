@@ -16,6 +16,7 @@ Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-sneak'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tomasr/molokai'
+Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -99,6 +100,7 @@ omap ac <Plug>(coc-classobj-a)
 set nohlsearch
 set noswapfile
 set ignorecase
+set mouse=a
 set termguicolors
 set updatetime=300
 "" Information
