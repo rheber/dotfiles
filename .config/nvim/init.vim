@@ -16,6 +16,8 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-sneak'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'TaDaa/vimade'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'tpope/vim-commentary'
@@ -37,7 +39,7 @@ endfunction
 
 " Commands
 "" Dumb snippets
-command -nargs=1 Snip :read $HOME/.config/editor/snippets/<args>
+command! -nargs=1 Snip :read $HOME/.config/editor/snippets/<args>
 
 " Autocommands
 "" Reload changed files
@@ -135,3 +137,4 @@ let g:coc_disable_startup_warning=1
 colorscheme molokai
 let g:rainbow_active=1
 let g:sneak#label=1
+let g:vimade = { "enablefocusfading": 1 }
