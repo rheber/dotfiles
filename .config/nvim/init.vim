@@ -7,6 +7,7 @@ if empty(glob(plugpath))
 endif
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'frazrepo/vim-rainbow'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
