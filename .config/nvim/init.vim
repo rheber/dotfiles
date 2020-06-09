@@ -16,12 +16,15 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-sneak'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'TaDaa/vimade'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
@@ -29,6 +32,13 @@ Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 " Functions
+function DeleteHiddenBuffers()
+  let tpbl=[]
+  call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+  for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+    silent execute 'bwipeout' buf
+  endfor
+endfunction
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -38,6 +48,8 @@ function! s:show_documentation()
 endfunction
 
 " Commands
+"" Clean up buffer list
+command! DeleteHiddenBuffers call DeleteHiddenBuffers()
 "" Dumb snippets
 command! -nargs=1 Snip :read $HOME/.config/editor/snippets/<args>
 
@@ -77,6 +89,8 @@ cnoremap <expr> <c-j> ("\<C-n>")
 cnoremap <expr> <c-k> ("\<C-p>")
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
+"" Tabs
+nnoremap <leader>ts :tab<space>sp<CR>
 "" Plugins
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -135,6 +149,7 @@ set statusline+=%c,%l/%L(%P)
 "" Plugins
 let g:coc_disable_startup_warning=1
 colorscheme molokai
+let g:ragtag_global_maps = 1
 let g:rainbow_active=1
 let g:sneak#label=1
 let g:vimade = { "enablefocusfading": 1 }
