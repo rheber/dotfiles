@@ -1,6 +1,8 @@
 [include]
   path = ~/.local/.gitconfig
 [alias]
+  ad  = add
+  adp = add -p
   br  = branch
   brd = branch -d
   ch  = checkout
@@ -8,9 +10,12 @@
   cht = checkout -t
   cm  = commit
   cma = commit --amend
+  ph  = push
+  pho = push -u origin
+  pl  = pull
   rpo = remote prune origin
   st  = status
 [core]
   excludesfile = ~/.config/.gitignore_global
 [core]
-	editor = nvim
+  editor = nvim

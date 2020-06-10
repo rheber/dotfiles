@@ -10,6 +10,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'frazrepo/vim-rainbow'
 Plug 'godlygeek/tabular'
+Plug 'jesseleite/vim-agriculture'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
@@ -17,7 +18,6 @@ Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-sneak'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'TaDaa/vimade'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomasr/molokai'
@@ -90,6 +90,7 @@ cnoremap <expr> <c-k> ("\<C-p>")
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
 "" Tabs
+nnoremap <leader>te :tabe<CR>
 nnoremap <leader>ts :tab<space>sp<CR>
 "" Plugins
 nnoremap <silent> K :call <SID>show_documentation()<CR>
