@@ -32,7 +32,7 @@ Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 " Functions
-function DeleteHiddenBuffers()
+function! DeleteHiddenBuffers()
   let tpbl=[]
   call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
   for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
@@ -54,13 +54,15 @@ command! DeleteHiddenBuffers call DeleteHiddenBuffers()
 command! -nargs=1 Snip :read $HOME/.config/editor/snippets/<args>
 
 " Autocommands
-"" Reload changed files
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-  \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
-autocmd FileChangedShellPost *
-  \ echohl WarningMsg | echo "File changed on disk. Reloaded." | echohl None
+"" Open all folds when a buffer is opened.
+au BufRead * normal zR
 "" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+au CursorHold * silent call CocActionAsync('highlight')
+"" Reload changed files
+au FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Reloaded." | echohl None
+au FocusGained,BufEnter,CursorHold,CursorHoldI *
+  \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
 
 "Abbreviations
 "" New-tab help
@@ -136,6 +138,9 @@ set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:␣
 set shiftwidth=2
 set showbreak=↪
 set tabstop=2
+"" Folds
+set foldcolumn=4
+set foldmethod=indent
 "" Buffers and tabs
 set hidden
 set splitbelow
@@ -148,8 +153,8 @@ set statusline+=%{FugitiveStatusline()}
 set statusline+=[%{coc#status()}%{get(b:,'coc_current_function','')}]
 set statusline+=%c,%l/%L(%P)
 "" Plugins
-let g:coc_disable_startup_warning=1
 colorscheme molokai
+let g:coc_disable_startup_warning=1
 let g:ragtag_global_maps = 1
 let g:rainbow_active=1
 let g:sneak#label=1
