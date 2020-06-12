@@ -8,7 +8,6 @@ endif
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'frazrepo/vim-rainbow'
 Plug 'godlygeek/tabular'
 Plug 'jesseleite/vim-agriculture'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -30,6 +29,14 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 call plug#end()
+call coc#add_extension(
+  \   'coc-explorer',
+  \   'coc-json',
+  \   'coc-lists',
+  \   'coc-marketplace',
+  \   'coc-python',
+  \   'coc-tsserver'
+  \ )
 
 " Functions
 function! DeleteHiddenBuffers()
@@ -54,8 +61,6 @@ command! DeleteHiddenBuffers call DeleteHiddenBuffers()
 command! -nargs=1 Snip :read $HOME/.config/editor/snippets/<args>
 
 " Autocommands
-"" Open all folds when a buffer is opened.
-au BufRead * normal zR
 "" Highlight the symbol and its references when holding the cursor.
 au CursorHold * silent call CocActionAsync('highlight')
 "" Reload changed files
@@ -72,10 +77,6 @@ cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : '
 let mapleader = " "
 let maplocalleader = ","
 "" No-ops
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
 noremap <CR> <Nop>
 noremap <space> <Nop>
 noremap <backspace> <Nop>
@@ -104,7 +105,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>e :CocCommand explorer<CR>
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>rf  <Plug>(coc-refactor)
 nmap <leader>rn  <Plug>(coc-rename)
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
@@ -139,6 +140,7 @@ set shiftwidth=2
 set showbreak=↪
 set tabstop=2
 "" Folds
+set nofoldenable
 set foldcolumn=4
 set foldmethod=indent
 "" Buffers and tabs
