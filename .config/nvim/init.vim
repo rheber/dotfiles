@@ -7,6 +7,9 @@ if empty(glob(plugpath))
 endif
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'AndrewRadev/tagalong.vim'
+Plug 'AndrewRadev/undoquit.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'
 Plug 'jesseleite/vim-agriculture'
@@ -19,7 +22,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'TaDaa/vimade'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -28,7 +30,11 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+"" Colours
+Plug 'morhetz/gruvbox'
+"Plug 'tomasr/molokai'
 call plug#end()
+colorscheme gruvbox
 call coc#add_extension(
   \   'coc-explorer',
   \   'coc-json',
@@ -145,6 +151,7 @@ set foldcolumn=4
 set foldmethod=indent
 "" Buffers and tabs
 set hidden
+set showtabline=2
 set splitbelow
 set splitright
 set switchbuf=usetab,newtab
@@ -155,7 +162,6 @@ set statusline+=%{FugitiveStatusline()}
 set statusline+=[%{coc#status()}%{get(b:,'coc_current_function','')}]
 set statusline+=%c,%l/%L(%P)
 "" Plugins
-colorscheme molokai
 let g:coc_disable_startup_warning=1
 let g:ragtag_global_maps = 1
 let g:rainbow_active=1
