@@ -1,6 +1,6 @@
 "Plugins
-let plugpath = $XDG_DATA_HOME . '/nvim/site/autoload/plug.vim'
-if empty(glob(plugpath))
+let s:plugpath = $XDG_DATA_HOME . '/nvim/site/autoload/plug.vim'
+if empty(glob(s:plugpath))
   silent !curl -fLo $XDG_DATA_HOME/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -10,6 +10,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'AndrewRadev/undoquit.vim'
+Plug 'chrisbra/Colorizer'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'
 Plug 'jesseleite/vim-agriculture'
@@ -19,6 +20,7 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-sneak'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'RRethy/vim-illuminate'
 Plug 'sheerun/vim-polyglot'
 Plug 'TaDaa/vimade'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -30,6 +32,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'unblevable/quick-scope'
 "" Colours
 Plug 'morhetz/gruvbox'
 "Plug 'tomasr/molokai'
@@ -41,15 +44,16 @@ call coc#add_extension(
   \   'coc-lists',
   \   'coc-marketplace',
   \   'coc-python',
-  \   'coc-tsserver'
+  \   'coc-tsserver',
+  \   'coc-vimlsp',
   \ )
 
 " Functions
-function! DeleteHiddenBuffers()
-  let tpbl=[]
-  call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
-  for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
-    silent execute 'bwipeout' buf
+function! s:DeleteHiddenBuffers()
+  let l:tpbl=[]
+  call map(range(1, tabpagenr('$')), 'extend(l:tpbl, tabpagebuflist(v:val))')
+  for l:buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(l:tpbl, v:val)==-1')
+    silent execute 'bwipeout' l:buf
   endfor
 endfunction
 function! s:show_documentation()
@@ -62,14 +66,14 @@ endfunction
 
 " Commands
 "" Clean up buffer list
-command! DeleteHiddenBuffers call DeleteHiddenBuffers()
+command! DeleteHiddenBuffers call s:DeleteHiddenBuffers()
 "" Dumb snippets
 command! -nargs=1 Snip :read $HOME/.config/editor/snippets/<args>
 
 " Autocommands
-"" Highlight the symbol and its references when holding the cursor.
-au CursorHold * silent call CocActionAsync('highlight')
-"" Reload changed files
+"" When a buffer loads, colorise it
+au BufNewFile,BufRead * :ColorHighlight!
+"" When a file is changed, reload it
 au FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Reloaded." | echohl None
 au FocusGained,BufEnter,CursorHold,CursorHoldI *
@@ -80,8 +84,8 @@ au FocusGained,BufEnter,CursorHold,CursorHoldI *
 cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
 
 " Keymaps
-let mapleader = " "
-let maplocalleader = ","
+let g:mapleader = " "
+let g:maplocalleader = ","
 "" No-ops
 noremap <CR> <Nop>
 noremap <space> <Nop>
