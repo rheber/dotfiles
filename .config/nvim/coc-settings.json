@@ -1,9 +1,16 @@
 {
       "cSpell.enabled": false,
+      "java.import.gradle.enabled": false,
+      "languageserver": {
+            "kotlin": {
+                  "command": "~/.local/share/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
+                  "filetypes": ["kotlin"]
+            }
+      },
       "python.analysis.diagnosticEnabled": true,
       "python.linting.enabled": true,
       "python.linting.pylintArgs": [
-        "--disable=C0103,R0903"
+            "--disable=C0103,R0903"
       ],
       "python.linting.pylintEnabled": true,
       "python.linting.pylintUseMinimalCheckers": false,

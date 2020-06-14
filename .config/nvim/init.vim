@@ -33,6 +33,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'unblevable/quick-scope'
+Plug 'wellle/targets.vim'
 "" Colours
 Plug 'morhetz/gruvbox'
 "Plug 'tomasr/molokai'
@@ -40,10 +41,12 @@ call plug#end()
 colorscheme gruvbox
 call coc#add_extension(
   \   'coc-explorer',
+  \   'coc-java',
   \   'coc-json',
   \   'coc-lists',
   \   'coc-marketplace',
   \   'coc-python',
+  \   'coc-spell-checker',
   \   'coc-tsserver',
   \   'coc-vimlsp',
   \ )
