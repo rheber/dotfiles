@@ -105,6 +105,8 @@ cnoremap <expr> <c-j> ("\<C-n>")
 cnoremap <expr> <c-k> ("\<C-p>")
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
+"" Quit
+nnoremap <c-d> :qa<CR>
 "" Tabs
 nnoremap <leader>te :tabe<CR>
 nnoremap <leader>ts :tab<space>sp<CR>
