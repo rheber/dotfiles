@@ -13,6 +13,7 @@ Plug 'AndrewRadev/undoquit.vim'
 Plug 'chrisbra/Colorizer'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'
+Plug 'jaxbot/semantic-highlight.vim'
 Plug 'jesseleite/vim-agriculture'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -22,6 +23,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'RRethy/vim-illuminate'
 Plug 'sheerun/vim-polyglot'
+Plug 'Shougo/echodoc.vim'
 Plug 'TaDaa/vimade'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tommcdo/vim-fugitive-blame-ext'
@@ -59,6 +61,10 @@ function! s:DeleteHiddenBuffers()
     silent execute 'bwipeout' l:buf
   endfor
 endfunction
+function! s:ActivateHighlighting()
+  :ColorHighlight!
+  :SemanticHighlight
+endfunction
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -75,7 +81,7 @@ command! -nargs=1 Snip :read $HOME/.config/editor/snippets/<args>
 
 " Autocommands
 "" When a buffer loads, colorise it
-au BufNewFile,BufRead * :ColorHighlight!
+au BufEnter,BufNewFile,BufRead * call s:ActivateHighlighting()
 "" When a file is changed, reload it
 au FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Reloaded." | echohl None
@@ -115,11 +121,13 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <leader>aa  <Plug>(coc-codeaction)
+nmap <leader>al  <Plug>(coc-codeaction-line)
 nmap <leader>e :CocCommand explorer<CR>
+nmap <leader>h :SemanticHighlightToggle<CR>
 nmap <leader>rf  <Plug>(coc-refactor)
 nmap <leader>rn  <Plug>(coc-rename)
 xmap if <Plug>(coc-funcobj-i)
