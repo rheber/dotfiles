@@ -1,6 +1,7 @@
 # Default programs
 export EDITOR=nvim
 export SHELL=bash
+export TERMINAL=kitty
 
 # XDG
 export XDG_CACHE_HOME="$HOME/.cache"
