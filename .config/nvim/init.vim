@@ -13,7 +13,7 @@ Plug 'AndrewRadev/undoquit.vim'
 Plug 'chrisbra/Colorizer'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'
-Plug 'jaxbot/semantic-highlight.vim'
+"Plug 'jaxbot/semantic-highlight.vim'
 Plug 'jesseleite/vim-agriculture'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -21,7 +21,7 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-sneak'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'RRethy/vim-illuminate'
+"Plug 'RRethy/vim-illuminate'
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/echodoc.vim'
 Plug 'TaDaa/vimade'
@@ -34,7 +34,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'unblevable/quick-scope'
+"Plug 'unblevable/quick-scope'
 Plug 'wellle/targets.vim'
 "" Colours
 Plug 'morhetz/gruvbox'
@@ -63,7 +63,9 @@ function! s:DeleteHiddenBuffers()
 endfunction
 function! s:ActivateHighlighting()
   :ColorHighlight!
-  :SemanticHighlight
+  if !&readonly
+"    :SemanticHighlight
+  endif
 endfunction
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -81,12 +83,18 @@ command! -nargs=1 Snip :read $HOME/.config/editor/snippets/<args>
 
 " Autocommands
 "" When a buffer loads, colorise it
-au BufEnter,BufNewFile,BufRead * call s:ActivateHighlighting()
+augroup configLoadBuffer
+  au!
+  au BufAdd,BufEnter,BufNewFile,BufRead * call s:ActivateHighlighting()
+augroup END
 "" When a file is changed, reload it
-au FileChangedShellPost *
-  \ echohl WarningMsg | echo "File changed on disk. Reloaded." | echohl None
-au FocusGained,BufEnter,CursorHold,CursorHoldI *
-  \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+augroup configFileChanged
+  au!
+  au FileChangedShellPost *
+    \ echohl WarningMsg | echo "File changed on disk. Reloaded." | echohl None
+  au FocusGained,BufEnter,CursorHold,CursorHoldI *
+    \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+augroup END
 
 "Abbreviations
 "" New-tab help
@@ -126,10 +134,12 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <leader>aa  <Plug>(coc-codeaction)
 nmap <leader>al  <Plug>(coc-codeaction-line)
+nmap <leader>an  <Plug>(coc-rename)
+nmap <leader>ar  <Plug>(coc-refactor)
 nmap <leader>e :CocCommand explorer<CR>
-nmap <leader>h :SemanticHighlightToggle<CR>
-nmap <leader>rf  <Plug>(coc-refactor)
-nmap <leader>rn  <Plug>(coc-rename)
+nmap <leader>f :Files<CR>
+nmap <leader>r :Rg<CR>
+"nmap <leader>h :SemanticHighlightToggle<CR>
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
@@ -145,6 +155,7 @@ set nohlsearch
 set noswapfile
 set ignorecase
 set mouse=a
+set synmaxcol=100
 set termguicolors
 set updatetime=300
 "" Information
@@ -179,8 +190,8 @@ set statusline+=%{FugitiveStatusline()}
 set statusline+=[%{coc#status()}%{get(b:,'coc_current_function','')}]
 set statusline+=%c,%l/%L(%P)
 "" Plugins
+let g:loaded_matchparen = 1
 let g:coc_disable_startup_warning=1
 let g:ragtag_global_maps = 1
-let g:rainbow_active=1
 let g:sneak#label=1
 let g:vimade = { "enablefocusfading": 1 }
