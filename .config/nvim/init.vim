@@ -9,7 +9,6 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/tagalong.vim'
-Plug 'AndrewRadev/undoquit.vim'
 Plug 'bkad/CamelCaseMotion'
 Plug 'chrisbra/Colorizer'
 Plug 'christoomey/vim-tmux-navigator'
@@ -34,6 +33,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
+Plug 'zefei/vim-wintabs'
 "" Colours
 Plug 'morhetz/gruvbox'
 "Plug 'tomasr/molokai'
@@ -132,15 +132,20 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
+nmap          gj <Plug>(wintabs_next)
+nmap          gk <Plug>(wintabs_previous)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <leader>aa  <Plug>(coc-codeaction)
-nmap <leader>al  <Plug>(coc-codeaction-line)
-nmap <leader>an  <Plug>(coc-rename)
-nmap <leader>ar  <Plug>(coc-refactor)
-nmap <leader>e :CocCommand explorer<CR>
-nmap <leader>f :Files<CR>
-nmap <leader>r :Rg<CR>
+nmap  <leader>aa <Plug>(coc-codeaction)
+nmap  <leader>al <Plug>(coc-codeaction-line)
+nmap  <leader>an <Plug>(coc-rename)
+nmap  <leader>ar <Plug>(coc-refactor)
+nmap  <leader>e  :CocCommand explorer<CR>
+nmap  <leader>f  :Files<CR>
+nmap  <leader>O  <Plug>(wintabs_only)
+nmap  <leader>r  :Rg<CR>
+nmap  <leader>q  <Plug>(wintabs_close)
+nmap  <leader>Q  <Plug>(wintabs_undo)
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
