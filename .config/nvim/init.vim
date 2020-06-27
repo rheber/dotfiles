@@ -10,10 +10,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'AndrewRadev/undoquit.vim'
+Plug 'bkad/CamelCaseMotion'
 Plug 'chrisbra/Colorizer'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'
-"Plug 'jaxbot/semantic-highlight.vim'
 Plug 'jesseleite/vim-agriculture'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -21,7 +21,6 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-sneak'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'RRethy/vim-illuminate'
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/echodoc.vim'
 Plug 'TaDaa/vimade'
@@ -34,7 +33,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-"Plug 'unblevable/quick-scope'
 Plug 'wellle/targets.vim'
 "" Colours
 Plug 'morhetz/gruvbox'
@@ -54,6 +52,7 @@ call coc#add_extension(
   \ )
 
 " Functions
+
 function! s:DeleteHiddenBuffers()
   let l:tpbl=[]
   call map(range(1, tabpagenr('$')), 'extend(l:tpbl, tabpagebuflist(v:val))')
@@ -61,12 +60,7 @@ function! s:DeleteHiddenBuffers()
     silent execute 'bwipeout' l:buf
   endfor
 endfunction
-function! s:ActivateHighlighting()
-  :ColorHighlight!
-  if !&readonly
-"    :SemanticHighlight
-  endif
-endfunction
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -82,11 +76,19 @@ command! DeleteHiddenBuffers call s:DeleteHiddenBuffers()
 command! -nargs=1 Snip :read $HOME/.config/editor/snippets/<args>
 
 " Autocommands
+
+"" When jumping to a COC placeholder, show signature
+augroup configCocJumpPlaceholder
+  au!
+  au User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup END
+
 "" When a buffer loads, colorise it
 augroup configLoadBuffer
   au!
-  au BufAdd,BufEnter,BufNewFile,BufRead * call s:ActivateHighlighting()
+  au BufAdd,BufEnter,BufNewFile,BufRead * :ColorHighlight!
 augroup END
+
 "" When a file is changed, reload it
 augroup configFileChanged
   au!
@@ -139,7 +141,6 @@ nmap <leader>ar  <Plug>(coc-refactor)
 nmap <leader>e :CocCommand explorer<CR>
 nmap <leader>f :Files<CR>
 nmap <leader>r :Rg<CR>
-"nmap <leader>h :SemanticHighlightToggle<CR>
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
@@ -151,21 +152,18 @@ omap ac <Plug>(coc-classobj-a)
 
 " Settings
 "" Miscellany
-set nohlsearch
 set noswapfile
 set ignorecase
 set mouse=a
-set synmaxcol=100
-set termguicolors
 set updatetime=300
-"" Information
-set cmdheight=2
+set notimeout
+"" Coloring
+set nohlsearch
 set colorcolumn=80
 set cursorcolumn
 set cursorline
-set number
-set shortmess+=c
-set signcolumn=yes
+set synmaxcol=100
+set termguicolors
 "" Indentation and whitespace
 set expandtab
 set list
@@ -173,6 +171,9 @@ set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:␣
 set shiftwidth=2
 set showbreak=↪
 set tabstop=2
+"" Gutter
+set number
+set signcolumn=yes
 "" Folds
 set nofoldenable
 set foldcolumn=4
@@ -183,15 +184,19 @@ set showtabline=2
 set splitbelow
 set splitright
 set switchbuf=usetab,newtab
-"" Statusline
+"" Command line
+set cmdheight=2
+set shortmess+=c
+"" Status line
 set statusline=%m%r%w%q%y%F
 set statusline+=%=
 set statusline+=%{FugitiveStatusline()}
 set statusline+=[%{coc#status()}%{get(b:,'coc_current_function','')}]
 set statusline+=%c,%l/%L(%P)
 "" Plugins
-let g:loaded_matchparen = 1
+let g:camelcasemotion_key = '<leader>'
 let g:coc_disable_startup_warning=1
+let g:loaded_matchparen = 1
 let g:ragtag_global_maps = 1
 let g:sneak#label=1
 let g:vimade = { "enablefocusfading": 1 }
