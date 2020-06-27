@@ -14,5 +14,6 @@
       ],
       "python.linting.pylintEnabled": true,
       "python.linting.pylintUseMinimalCheckers": false,
-      "python.jediEnabled": true
+      "python.jediEnabled": true,
+      "session.directory": "~/.cache/nvim/sessions"
 }
