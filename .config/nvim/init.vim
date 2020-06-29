@@ -9,7 +9,7 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/tagalong.vim'
-Plug 'bkad/CamelCaseMotion'
+"Plug 'bkad/CamelCaseMotion'
 Plug 'chrisbra/Colorizer'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'
@@ -199,7 +199,7 @@ set statusline+=%{FugitiveStatusline()}
 set statusline+=[%{coc#status()}%{get(b:,'coc_current_function','')}]
 set statusline+=%c,%l/%L(%P)
 "" Plugins
-let g:camelcasemotion_key = '<leader>'
+"let g:camelcasemotion_key = '<leader>'
 let g:coc_disable_startup_warning=1
 let g:loaded_matchparen = 1
 let g:ragtag_global_maps = 1
