@@ -19,7 +19,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-sneak'
+Plug 'liuchengxu/vista.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'romainl/vim-qf'
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/echodoc.vim'
 Plug 'TaDaa/vimade'
@@ -128,14 +130,12 @@ nnoremap <leader>te :tabe<CR>
 nnoremap <leader>ts :tab<space>sp<CR>
 "" Plugins
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> [g <Plug>(coc-definition)
+nmap <silent> ]g <Plug>(coc-references)
+nmap <silent> [h <Plug>(coc-diagnostic-prev)
+nmap <silent> ]h <Plug>(coc-diagnostic-next)
 nmap          gj <Plug>(wintabs_next)
 nmap          gk <Plug>(wintabs_previous)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gy <Plug>(coc-type-definition)
 nmap  <leader>aa <Plug>(coc-codeaction)
 nmap  <leader>al <Plug>(coc-codeaction-line)
 nmap  <leader>an <Plug>(coc-rename)
@@ -146,6 +146,8 @@ nmap  <leader>O  <Plug>(wintabs_only)
 nmap  <leader>r  :Rg<CR>
 nmap  <leader>q  <Plug>(wintabs_close)
 nmap  <leader>Q  <Plug>(wintabs_undo)
+nmap  <leader>v  :Vista!!<CR>
+"nmap  <leader>wq <Plug>(qf_qf_toggle_stay)
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
@@ -205,3 +207,4 @@ let g:loaded_matchparen = 1
 let g:ragtag_global_maps = 1
 let g:sneak#label=1
 let g:vimade = { "enablefocusfading": 1 }
+let g:vista_default_executive = 'coc'

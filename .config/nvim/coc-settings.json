@@ -1,5 +1,6 @@
 {
       "cSpell.enabled": false,
+      "explorer.previewAction.onHover": false,
       "java.import.gradle.enabled": false,
       "languageserver": {
             "kotlin": {
