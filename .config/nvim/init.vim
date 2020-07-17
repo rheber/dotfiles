@@ -118,6 +118,7 @@ noremap + <Nop>
 noremap ; :
 noremap <leader>; ;
 noremap <leader>, ,
+noremap <leader>l ("\<C-l>")
 "" Menu navigation
 cnoremap <expr> <c-j> ("\<C-n>")
 cnoremap <expr> <c-k> ("\<C-p>")
@@ -169,7 +170,7 @@ set nohlsearch
 set colorcolumn=80
 set cursorcolumn
 set cursorline
-set synmaxcol=100
+set synmaxcol=0
 set termguicolors
 "" Indentation and whitespace
 set expandtab
