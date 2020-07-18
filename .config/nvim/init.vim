@@ -15,14 +15,11 @@ Plug 'chrisbra/Colorizer'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'
 Plug 'jesseleite/vim-agriculture'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-sneak'
 Plug 'liuchengxu/vista.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'romainl/vim-qf'
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/echodoc.vim'
 Plug 'TaDaa/vimade'
@@ -36,6 +33,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'zefei/vim-wintabs'
 "" Colours
 Plug 'morhetz/gruvbox'
@@ -145,17 +143,16 @@ nmap  <leader>al  <Plug>(coc-codeaction-line)
 nmap  <leader>an  <Plug>(coc-rename)
 nmap  <leader>ar  <Plug>(coc-refactor)
 nmap  <leader>e   :CocCommand explorer<CR>
-nmap  <leader>ff  :Files<CR>
-nmap  <leader>fF  :Files!<CR>
-nmap  <leader>fh  :History<CR>
-nmap  <leader>fH  :History!<CR>
-nmap  <leader>fr  :Rg<CR>
-nmap  <leader>fR  :Rg!<CR>
+nmap  <leader>ff  :Leaderf file<CR>
+nmap  <leader>fh  :Leaderf help<CR>
+nmap  <leader>fl  :Leaderf loclist<CR>
+nmap  <leader>fm  :Leaderf mru<CR>
+nmap  <leader>fq  :Leaderf quickfix<CR>
+nmap  <leader>fr  :Leaderf rg<CR>
 nmap  <leader>O   <Plug>(wintabs_only)
 nmap  <leader>q   <Plug>(wintabs_close)
 nmap  <leader>Q   <Plug>(wintabs_undo)
 nmap  <leader>v   :Vista!!<CR>
-"nmap  <leader>wq <Plug>(qf_qf_toggle_stay)
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
