@@ -7,6 +7,7 @@ if empty(glob(s:plugpath))
 endif
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
+Plug 'AndrewRadev/bufferize.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/tagalong.vim'
 "Plug 'bkad/CamelCaseMotion'
@@ -49,6 +50,7 @@ call coc#add_extension(
   \   'coc-marketplace',
   \   'coc-python',
   \   'coc-spell-checker',
+  \   'coc-tslint',
   \   'coc-tsserver',
   \   'coc-vimlsp',
   \ )
@@ -131,23 +133,28 @@ nnoremap <leader>te :tabe<CR>
 nnoremap <leader>ts :tab<space>sp<CR>
 "" Plugins
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-nmap <silent> [g <Plug>(coc-definition)
-nmap <silent> ]g <Plug>(coc-references)
-nmap <silent> [h <Plug>(coc-diagnostic-prev)
-nmap <silent> ]h <Plug>(coc-diagnostic-next)
-nmap          gj <Plug>(wintabs_next)
-nmap          gk <Plug>(wintabs_previous)
-nmap  <leader>aa <Plug>(coc-codeaction)
-nmap  <leader>al <Plug>(coc-codeaction-line)
-nmap  <leader>an <Plug>(coc-rename)
-nmap  <leader>ar <Plug>(coc-refactor)
-nmap  <leader>e  :CocCommand explorer<CR>
-nmap  <leader>f  :Files<CR>
-nmap  <leader>O  <Plug>(wintabs_only)
-nmap  <leader>r  :Rg<CR>
-nmap  <leader>q  <Plug>(wintabs_close)
-nmap  <leader>Q  <Plug>(wintabs_undo)
-nmap  <leader>v  :Vista!!<CR>
+nmap <silent> [h  <Plug>(coc-diagnostic-prev)
+nmap <silent> ]h  <Plug>(coc-diagnostic-next)
+nmap          gj  <Plug>(wintabs_next)
+nmap          gk  <Plug>(wintabs_previous)
+nmap <silent> gld <Plug>(coc-definition)
+nmap <silent> gli <Plug>(coc-implementation)
+nmap <silent> glr <Plug>(coc-references)
+nmap  <leader>aa  <Plug>(coc-codeaction)
+nmap  <leader>al  <Plug>(coc-codeaction-line)
+nmap  <leader>an  <Plug>(coc-rename)
+nmap  <leader>ar  <Plug>(coc-refactor)
+nmap  <leader>e   :CocCommand explorer<CR>
+nmap  <leader>ff  :Files<CR>
+nmap  <leader>fF  :Files!<CR>
+nmap  <leader>fh  :History<CR>
+nmap  <leader>fH  :History!<CR>
+nmap  <leader>fr  :Rg<CR>
+nmap  <leader>fR  :Rg!<CR>
+nmap  <leader>O   <Plug>(wintabs_only)
+nmap  <leader>q   <Plug>(wintabs_close)
+nmap  <leader>Q   <Plug>(wintabs_undo)
+nmap  <leader>v   :Vista!!<CR>
 "nmap  <leader>wq <Plug>(qf_qf_toggle_stay)
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
