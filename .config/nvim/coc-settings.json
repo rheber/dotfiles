@@ -11,7 +11,7 @@
       "python.analysis.diagnosticEnabled": true,
       "python.linting.enabled": true,
       "python.linting.pylintArgs": [
-            "--disable=C0103,R0903"
+            "--disable=C0103,R0901,R0903"
       ],
       "python.linting.pylintEnabled": true,
       "python.linting.pylintUseMinimalCheckers": false,
