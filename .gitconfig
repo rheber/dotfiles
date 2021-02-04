@@ -16,6 +16,7 @@
   rpo = remote prune origin
   st  = status
 [core]
-  excludesfile = ~/.config/.gitignore_global
-[core]
   editor = nvim
+  excludesfile = ~/.config/.gitignore_global
+[pull]
+  rebase = false
