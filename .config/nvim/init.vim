@@ -208,6 +208,11 @@ set statusline+=%c,%l/%L(%P)
 "" Plugins
 "let g:camelcasemotion_key = '<leader>'
 let g:coc_disable_startup_warning=1
+let g:Lf_RgConfig = [
+        \ "--glob=!*.json",
+        \ "--glob=!*.md",
+        \ "--glob=!*.svg",
+    \ ]
 let g:loaded_matchparen = 1
 let g:ragtag_global_maps = 1
 let g:sneak#label=1
