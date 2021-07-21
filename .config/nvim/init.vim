@@ -210,6 +210,7 @@ set statusline+=%c,%l/%L(%P)
 let g:coc_disable_startup_warning=1
 let g:Lf_RgConfig = [
         \ "--glob=!*.json",
+        \ "--glob=!*.lock",
         \ "--glob=!*.md",
         \ "--glob=!*.svg",
     \ ]
