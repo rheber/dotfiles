@@ -9,6 +9,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 export LESSHISTFILE=/dev/null
+export TMPDIR=/tmp
 
 [ -f ~/.local/.profile ] && source ~/.local/.profile
 [ -f ~/.config/.aliases ] && source ~/.config/.aliases

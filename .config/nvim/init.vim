@@ -19,7 +19,8 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-sneak'
 Plug 'liuchengxu/vista.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'tag': 'v0.0.80', 'do': 'yarn install --frozen-lockfile'}
+Plug 'preservim/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/echodoc.vim'
 Plug 'TaDaa/vimade'
@@ -41,17 +42,18 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 colorscheme gruvbox
 call coc#add_extension(
-  \   'coc-explorer',
   \   'coc-java',
   \   'coc-json',
   \   'coc-lists',
   \   'coc-marketplace',
   \   'coc-python',
+  \   'coc-rust-analyzer',
   \   'coc-spell-checker',
   \   'coc-tslint',
   \   'coc-tsserver',
   \   'coc-vimlsp',
   \ )
+"  \   'coc-explorer',
 
 " Functions
 
@@ -142,7 +144,7 @@ nmap  <leader>aa  <Plug>(coc-codeaction)
 nmap  <leader>al  <Plug>(coc-codeaction-line)
 nmap  <leader>an  <Plug>(coc-rename)
 nmap  <leader>ar  <Plug>(coc-refactor)
-nmap  <leader>e   :CocCommand explorer<CR>
+nmap  <leader>e   :NERDTreeToggle<CR>
 nmap  <leader>ff  :Leaderf file<CR>
 nmap  <leader>fh  :Leaderf help<CR>
 nmap  <leader>fl  :Leaderf loclist<CR>
