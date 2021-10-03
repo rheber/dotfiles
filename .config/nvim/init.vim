@@ -49,10 +49,10 @@ call coc#add_extension(
   \   'coc-python',
   \   'coc-rust-analyzer',
   \   'coc-spell-checker',
-  \   'coc-tslint',
   \   'coc-tsserver',
   \   'coc-vimlsp',
   \ )
+"  \   'coc-tslint',
 "  \   'coc-explorer',
 
 " Functions
