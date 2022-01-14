@@ -11,7 +11,7 @@ Plug 'AndrewRadev/bufferize.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/tagalong.vim'
 "Plug 'bkad/CamelCaseMotion'
-Plug 'chrisbra/Colorizer'
+"Plug 'chrisbra/Colorizer'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'
 Plug 'jesseleite/vim-agriculture'
@@ -88,10 +88,10 @@ augroup configCocJumpPlaceholder
 augroup END
 
 "" When a buffer loads, colorise it
-augroup configLoadBuffer
-  au!
-  au BufAdd,BufEnter,BufNewFile,BufRead * :ColorHighlight!
-augroup END
+"augroup configLoadBuffer
+"  au!
+"  au BufAdd,BufEnter,BufNewFile,BufRead * :ColorHighlight!
+"augroup END
 
 "" When a file is changed, reload it
 augroup configFileChanged
