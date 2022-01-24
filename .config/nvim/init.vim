@@ -46,6 +46,7 @@ call coc#add_extension(
   \   'coc-json',
   \   'coc-lists',
   \   'coc-marketplace',
+  \   'coc-omnisharp',
   \   'coc-python',
   \   'coc-rust-analyzer',
   \   'coc-spell-checker',
