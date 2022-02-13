@@ -10,8 +10,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/bufferize.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/tagalong.vim'
-"Plug 'bkad/CamelCaseMotion'
-"Plug 'chrisbra/Colorizer'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'
 Plug 'jesseleite/vim-agriculture'
@@ -19,7 +17,7 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-sneak'
 Plug 'liuchengxu/vista.vim'
-Plug 'neoclide/coc.nvim', {'tag': 'v0.0.80', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'commit': 'fb123ed', 'do': 'yarn install --frozen-lockfile'}
 Plug 'preservim/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/echodoc.vim'
@@ -38,7 +36,6 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'zefei/vim-wintabs'
 "" Colours
 Plug 'morhetz/gruvbox'
-"Plug 'tomasr/molokai'
 call plug#end()
 colorscheme gruvbox
 call coc#add_extension(
@@ -53,8 +50,6 @@ call coc#add_extension(
   \   'coc-tsserver',
   \   'coc-vimlsp',
   \ )
-"  \   'coc-tslint',
-"  \   'coc-explorer',
 
 " Functions
 
@@ -87,12 +82,6 @@ augroup configCocJumpPlaceholder
   au!
   au User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END
-
-"" When a buffer loads, colorise it
-"augroup configLoadBuffer
-"  au!
-"  au BufAdd,BufEnter,BufNewFile,BufRead * :ColorHighlight!
-"augroup END
 
 "" When a file is changed, reload it
 augroup configFileChanged
@@ -209,7 +198,6 @@ set statusline+=%{FugitiveStatusline()}
 set statusline+=[%{coc#status()}%{get(b:,'coc_current_function','')}]
 set statusline+=%c,%l/%L(%P)
 "" Plugins
-"let g:camelcasemotion_key = '<leader>'
 let g:coc_disable_startup_warning=1
 let g:Lf_RgConfig = [
         \ "--glob=!*.json",
