@@ -140,7 +140,7 @@ nmap  <leader>fh  :Leaderf help<CR>
 nmap  <leader>fl  :Leaderf loclist<CR>
 nmap  <leader>fm  :Leaderf mru<CR>
 nmap  <leader>fq  :Leaderf quickfix<CR>
-nmap  <leader>fr  :Leaderf rg<CR>
+nmap  <leader>fr  :Leaderf rg --max-columns=200<CR>
 nmap  <leader>O   <Plug>(wintabs_only)
 nmap  <leader>q   <Plug>(wintabs_close)
 nmap  <leader>Q   <Plug>(wintabs_undo)
