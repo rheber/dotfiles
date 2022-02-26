@@ -14,6 +14,7 @@ export HISTFILE="$XDG_STATE_HOME/bash/history"
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 export LESSHISTFILE=/dev/null
 export NVM_DIR="$XDG_DATA_HOME/nvm"
+export PYENV_ROOT=$XDG_DATA_HOME/pyenv
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 
 [ -f ~/.local/.profile ] && source ~/.local/.profile
