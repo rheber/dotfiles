@@ -199,6 +199,7 @@ set statusline+=[%{coc#status()}%{get(b:,'coc_current_function','')}]
 set statusline+=%c,%l/%L(%P)
 "" Plugins
 let g:coc_disable_startup_warning=1
+let g:Lf_CacheDirectory = $HOME . '/.cache/LeaderF'
 let g:Lf_RgConfig = [
         \ "--glob=!*.json",
         \ "--glob=!*.lock",
