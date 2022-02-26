@@ -17,6 +17,6 @@
   st  = status
 [core]
   editor = nvim
-  excludesfile = ~/.config/.gitignore_global
+  excludesfile = ~/.config/git/.gitignore_global
 [pull]
   rebase = false
