@@ -16,5 +16,6 @@
       "python.linting.pylintEnabled": true,
       "python.linting.pylintUseMinimalCheckers": false,
       "python.jediEnabled": true,
-      "session.directory": "~/.cache/nvim/sessions"
+      "session.directory": "~/.cache/nvim/sessions",
+      "svelte.enable-ts-plugin": true
 }

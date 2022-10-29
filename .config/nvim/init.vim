@@ -47,6 +47,7 @@ call coc#add_extension(
   \   'coc-python',
   \   'coc-rust-analyzer',
   \   'coc-spell-checker',
+  \   'coc-svelte',
   \   'coc-tsserver',
   \   'coc-vimlsp',
   \ )
