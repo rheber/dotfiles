@@ -202,6 +202,7 @@ set statusline+=%c,%l/%L(%P)
 let g:coc_disable_startup_warning=1
 let g:Lf_CacheDirectory = $HOME . '/.cache/LeaderF'
 let g:Lf_RgConfig = [
+        \ "--glob=!dist/*",
         \ "--glob=!*.json",
         \ "--glob=!*.lock",
         \ "--glob=!*.md",
