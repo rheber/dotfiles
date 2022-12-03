@@ -78,6 +78,12 @@ command! -nargs=1 Snip :read $HOME/.config/editor/snippets/<args>
 
 " Autocommands
 
+"" Plaintext filetype, no syntax highlighting.
+augroup txtFileType
+  au!
+  au BufNewFile,BufRead,BufReadPost *.txt set filetype=txt
+augroup END
+
 "" When jumping to a COC placeholder, show signature
 augroup configCocJumpPlaceholder
   au!
