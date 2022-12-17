@@ -1,6 +1,10 @@
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias grep='grep --color=auto'
 
+function ll {
+  cd "$(llama "$@")"
+}
+
 linuxAliases () {
   alias ls='ls -alF --color=auto'
 }
