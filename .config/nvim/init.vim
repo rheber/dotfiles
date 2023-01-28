@@ -17,6 +17,7 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-sneak'
 Plug 'liuchengxu/vista.vim'
+Plug 'luochen1990/rainbow'
 Plug 'neoclide/coc.nvim', {'commit': 'fb123ed', 'do': 'yarn install --frozen-lockfile'}
 Plug 'preservim/nerdtree'
 Plug 'sheerun/vim-polyglot'
@@ -216,6 +217,7 @@ let g:Lf_RgConfig = [
     \ ]
 let g:loaded_matchparen = 1
 let g:ragtag_global_maps = 1
+let g:rainbow_active = 1
 let g:sneak#label=1
 let g:vimade = { "enablefocusfading": 1 }
 let g:vista_default_executive = 'coc'
