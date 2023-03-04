@@ -172,10 +172,13 @@ set notimeout
 "" Coloring
 set nohlsearch
 set colorcolumn=80
-set cursorcolumn
-set cursorline
 set synmaxcol=0
 set termguicolors
+"" Coloring - Crosshair
+set cursorcolumn
+highlight CursorColumn ctermfg=White ctermbg=238 cterm=bold guifg=white guibg=#444444 gui=bold
+set cursorline
+highlight CursorLine ctermfg=White ctermbg=238 cterm=bold guifg=white guibg=#444444 gui=bold
 "" Indentation and whitespace
 set expandtab
 set list
