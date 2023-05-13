@@ -22,7 +22,6 @@ Plug 'neoclide/coc.nvim', {'commit': 'fb123ed', 'do': 'yarn install --frozen-loc
 Plug 'preservim/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/echodoc.vim'
-Plug 'TaDaa/vimade'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'tpope/vim-commentary'
@@ -222,5 +221,4 @@ let g:loaded_matchparen = 1
 let g:ragtag_global_maps = 1
 let g:rainbow_active = 1
 let g:sneak#label=1
-let g:vimade = { "enablefocusfading": 1 }
 let g:vista_default_executive = 'coc'
