@@ -20,6 +20,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'luochen1990/rainbow'
 Plug 'neoclide/coc.nvim', {'commit': 'fb123ed', 'do': 'yarn install --frozen-lockfile'}
 Plug 'preservim/nerdtree'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/echodoc.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
