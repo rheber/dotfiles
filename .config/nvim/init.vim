@@ -47,7 +47,6 @@ call coc#add_extension(
   \   'coc-omnisharp',
   \   'coc-python',
   \   'coc-rust-analyzer',
-  \   'coc-spell-checker',
   \   'coc-svelte',
   \   'coc-tsserver',
   \   'coc-vimlsp',

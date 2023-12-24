@@ -1,12 +1,10 @@
 {
-      "cSpell.enabled": false,
-      "explorer.previewAction.onHover": false,
       "java.import.gradle.enabled": false,
       "languageserver": {
-            "kotlin": {
-                  "command": "~/.local/share/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
-                  "filetypes": ["kotlin"]
-            }
+        "kotlin": {
+          "command": "~/.local/share/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
+          "filetypes": ["kotlin"]
+        }
       },
       "python.analysis.diagnosticEnabled": true,
       "python.linting.enabled": true,
