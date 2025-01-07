@@ -18,7 +18,6 @@ Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-sneak'
 Plug 'liuchengxu/vista.vim'
 Plug 'luochen1990/rainbow'
-Plug 'neoclide/coc.nvim', {'commit': 'fb123ed', 'do': 'yarn install --frozen-lockfile'}
 Plug 'preservim/nerdtree'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'sheerun/vim-polyglot'
@@ -39,18 +38,6 @@ Plug 'zefei/vim-wintabs'
 Plug 'morhetz/gruvbox'
 call plug#end()
 colorscheme gruvbox
-call coc#add_extension(
-  \   'coc-java',
-  \   'coc-json',
-  \   'coc-lists',
-  \   'coc-marketplace',
-  \   'coc-omnisharp',
-  \   'coc-python',
-  \   'coc-rust-analyzer',
-  \   'coc-svelte',
-  \   'coc-tsserver',
-  \   'coc-vimlsp',
-  \ )
 
 " Functions
 
@@ -60,14 +47,6 @@ function! s:DeleteHiddenBuffers()
   for l:buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(l:tpbl, v:val)==-1')
     silent execute 'bwipeout' l:buf
   endfor
-endfunction
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
 endfunction
 
 " Commands
@@ -82,12 +61,6 @@ command! -nargs=1 Snip :read $HOME/.config/editor/snippets/<args>
 augroup txtFileType
   au!
   au BufNewFile,BufRead,BufReadPost *.txt set filetype=txt
-augroup END
-
-"" When jumping to a COC placeholder, show signature
-augroup configCocJumpPlaceholder
-  au!
-  au User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END
 
 "" When a file is changed, reload it
@@ -129,18 +102,8 @@ nnoremap <c-d> :qa<CR>
 nnoremap <leader>te :tabe<CR>
 nnoremap <leader>ts :tab<space>sp<CR>
 "" Plugins
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-nmap <silent> [h  <Plug>(coc-diagnostic-prev)
-nmap <silent> ]h  <Plug>(coc-diagnostic-next)
 nmap          gj  <Plug>(wintabs_next)
 nmap          gk  <Plug>(wintabs_previous)
-nmap <silent> gld <Plug>(coc-definition)
-nmap <silent> gli <Plug>(coc-implementation)
-nmap <silent> glr <Plug>(coc-references)
-nmap  <leader>aa  <Plug>(coc-codeaction)
-nmap  <leader>al  <Plug>(coc-codeaction-line)
-nmap  <leader>an  <Plug>(coc-rename)
-nmap  <leader>ar  <Plug>(coc-refactor)
 nmap  <leader>e   :NERDTreeToggle<CR>
 nmap  <leader>ff  :Leaderf file<CR>
 nmap  <leader>fh  :Leaderf help<CR>
@@ -152,14 +115,6 @@ nmap  <leader>O   <Plug>(wintabs_only)
 nmap  <leader>q   <Plug>(wintabs_close)
 nmap  <leader>Q   <Plug>(wintabs_undo)
 nmap  <leader>v   :Vista!!<CR>
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
 
 " Settings
 "" Miscellany
@@ -205,10 +160,8 @@ set shortmess+=c
 set statusline=%m%r%w%q%y%F
 set statusline+=%=
 set statusline+=%{FugitiveStatusline()}
-set statusline+=[%{coc#status()}%{get(b:,'coc_current_function','')}]
 set statusline+=%c,%l/%L(%P)
 "" Plugins
-let g:coc_disable_startup_warning=1
 let g:Lf_CacheDirectory = $HOME . '/.cache/LeaderF'
 let g:Lf_RgConfig = [
         \ "--glob=!dist/*",
@@ -221,4 +174,3 @@ let g:loaded_matchparen = 1
 let g:ragtag_global_maps = 1
 let g:rainbow_active = 1
 let g:sneak#label=1
-let g:vista_default_executive = 'coc'
